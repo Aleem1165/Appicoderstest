@@ -14,22 +14,19 @@ import { removeUserData } from '../../store/userSlice';
 
 interface HeaderProps {
     title?: string;
+    onLogoutPress?: () => void;
+    showLogout?: boolean
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
-    const dispatch = useDispatch()
-
-    const handleLogout = () => {
-        dispatch(setAuthenticated(false))
-        dispatch(removeUserData())
-    }
+const Header: React.FC<HeaderProps> = ({ title, onLogoutPress, showLogout = false }) => {
 
     return (
         <View style={styles.container}>
             <Text style={styles.buttonTitle}>{title}</Text>
-            <TouchableOpacity onPress={handleLogout}>
+            {showLogout && <TouchableOpacity onPress={onLogoutPress}>
                 <Image style={styles.logoutIcon} source={images.logoutIcon} />
             </TouchableOpacity>
+            }
         </View>
     );
 };
@@ -49,7 +46,7 @@ const styles = StyleSheet.create({
     },
     logoutIcon: {
         width: 25,
-        height: 35,
+        height: 32,
         resizeMode: 'contain'
     }
 });

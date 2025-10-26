@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontWeight: 'bold',
-        fontSize:fontSize.medium,
+        fontSize: fontSize.medium,
         marginTop: sizes.screenHeight * 0.02,
     },
     value: {
@@ -17,9 +17,17 @@ const styles = StyleSheet.create({
         marginTop: sizes.screenWidth * 0.01
     },
     valueBG: {
-        backgroundColor: colors.grey,
+        backgroundColor: colors.white,
         padding: sizes.screenWidth * 0.02,
-        borderRadius: sizes.screenWidth * 0.02
+        borderRadius: sizes.screenWidth * 0.02,
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 1.00,
+        elevation: 1
     }
 });
 

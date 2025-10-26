@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
         gap: sizes.screenWidth * 0.04,
         borderRadius: sizes.screenWidth * 0.03,
         marginTop: sizes.screenHeight * 0.05,
-        shadowColor: "#0005",
+        shadowColor: "#000000",
         shadowOffset: {
             width: 0,
             height: 1,
         },
-        shadowOpacity: 0.18,
+        shadowOpacity: 0.15,
         shadowRadius: 1.00,
-        elevation: 1,
+        elevation: 1
     },
     emailInput: {
         width: sizes.screenWidth * 0.76,
@@ -69,11 +69,17 @@ const styles = StyleSheet.create({
     inputLabel: {
         width: sizes.screenWidth * 0.76,
     },
-    isOnlineText:{
-        textAlign:'center',
-        position:'absolute',
-        width:sizes.screenWidth,
-        paddingVertical:2
+    isOnlineText: {
+        textAlign: 'center',
+        position: 'absolute',
+        width: sizes.screenWidth,
+        paddingVertical: 2
+    },
+    error: {
+        width: sizes.screenWidth * 0.76,
+        fontSize: fontSize.smallM,
+        color: colors.error,
+        fontWeight: '500'
     }
 });
 

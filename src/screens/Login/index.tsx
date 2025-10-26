@@ -20,17 +20,27 @@ const Login: React.FC = () => {
     const [secure, setSecure] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [visible, setVisible] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null)
 
     const handleLogin = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!email){
+            setError('*Please enter email address.')
+            return
+        }
         if (!email.trim() || !emailRegex.test(email)) {
-            Alert.alert('Invalid Email', 'Please enter a valid email address.');
+            setError('*Please enter a valid email address.')
             return;
+        }
+        if(!password){
+            setError('*Please enter password.')
+            return
         }
         if (password.trim().length < 6) {
-            Alert.alert('Invalid Password', 'Password must be at least 6 characters.');
+            setError('*Password must be at least 6 characters.')
             return;
         }
+        setError(null)
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
@@ -54,7 +64,7 @@ const Login: React.FC = () => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
                     {visible && <Text style={styles.isOnlineText}>
-                        {isOnline ? 'Internet Connected' : 'No Internet Connection'}
+                        {isOnline ? 'Online' : 'Offline'}
                     </Text>}
                     <Text style={styles.heading}>Welcome</Text>
                     <Text style={styles.secondHeading}>Login to continue</Text>
@@ -90,6 +100,7 @@ const Login: React.FC = () => {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                         <Text style={styles.error}>{error}</Text>
                         <Button title='Login' loader={isLoading} onPress={handleLogin} />
                     </View>
                 </View>
